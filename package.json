@@ -1,0 +1,20 @@
+{
+  "name": "road-mafia",
+  "version": "0.1.0",
+  "private": true,
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c yellow,cyan \"npm run dev -w @roadmafia/server\" \"npm run dev -w @roadmafia/client\"",
+    "build": "npm run build -w @roadmafia/client",
+    "start": "npm run build && npm run start -w @roadmafia/server",
+    "serve": "npm run start -w @roadmafia/server",
+    "test": "npm test -w @roadmafia/engine",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
